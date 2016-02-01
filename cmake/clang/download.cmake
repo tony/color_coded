@@ -48,21 +48,11 @@ if(NOT CUSTOM_CLANG)
     message(STATUS "Clang/LLVM ${CLANG_VERSION} already extracted")
   endif()
 
-  set(LLVM_ROOT_PATH ${CMAKE_CURRENT_BINARY_DIR}/${CLANG_DIRNAME})
+  set(LLVM_ROOT_DIR ${CMAKE_CURRENT_BINARY_DIR}/${CLANG_DIRNAME})
 
 else()
-  if(NOT LLVM_ROOT_PATH)
-    message(FATAL_ERROR "Using a custom clang requires *at least* setting LLVM_ROOT_PATH. See the README for details.")
-  endif()
 
-  message(STATUS "Trusting custom clang at ${LLVM_ROOT_PATH}")
-endif()
-
-if(NOT LLVM_INCLUDE_PATH)
-  set(LLVM_INCLUDE_PATH ${LLVM_ROOT_PATH}/include)
-endif()
-if(NOT LLVM_LIB_PATH)
-  set(LLVM_LIB_PATH ${LLVM_ROOT_PATH}/lib)
+  message(STATUS "Trusting custom clang at ${LLVM_ROOT_DIR}")
 endif()
 
 add_custom_target(clean_clang
